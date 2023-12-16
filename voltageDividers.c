@@ -16,10 +16,14 @@ int main(void){
     int PmaxInd, i, j, k;
 
     printf("Wecome to the Voltage Divider Calculator");
-    printf("Enter a value for Vin: \n");
-    printf("Enter a value for R1 between 10 and 100 Ohms: \n");
+    printf("Enter a value for Voltage in: \n");
+    scanf(" %lf", &Vin);
+    printf("Enter a value for Resistor1 between 10 and 100 Ohms: \n");
+    scanf(" %lf", &R1);
 
     
+
+
 
     
     return 0;
