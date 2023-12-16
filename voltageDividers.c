@@ -5,6 +5,7 @@
 #define Npts 10         //the number of points in the arrays
 
 /**Functions*/
+void print_array(double A[], int x);
 
 int main(void){
 
@@ -21,11 +22,26 @@ int main(void){
     printf("Enter a value for Resistor1 between 10 and 100 Ohms: \n");
     scanf(" %lf", &R1);
 
-    
+    /*Populate R2[] array*/
 
+    R2step = (R2max - R2min) / (Npts - 1); //all elements between ranges R2max and R2min should be equally spaced
+    R2[0] = R2min;
+    R2[Npts] = R2max;
+    for(i=1; i<Npts-1; i++){
+        R2[i] = R2[i-1] + R2step;
+    }
 
+    print_array(R2, Npts);
 
-    
     return 0;
+}
+
+void print_array(double A[], int x){
+    int i;
+    printf("Your array = { ");
+    for(i=0; i<x; i++){
+        printf("%d ", A[i]);
+    }
+    printf("}\n");
 }
 
