@@ -27,12 +27,12 @@ int main(void){
 
     R2step = (R2max - R2min) / (Npts - 1); //all elements between ranges R2max and R2min should be equally spaced
     R2[0] = R2min;
-    R2[Npts] = R2max;
+    R2[Npts-1] = R2max;
     for(i=1; i<Npts-1; i++){
         R2[i] = R2[i-1] + R2step;
     }
 
-    print_array(R2, Npts);
+    //print_array(R2, Npts);
 
     /*Populate I[] array with values of Current*/
 
@@ -58,6 +58,11 @@ int main(void){
     printf("Ind\tVin\t  R1\t   R2\t\t I\t\tVout\t\tPout\n");
     printf("\t(V)\t (Ohm)\t  (Ohm)\t\t(A)\t\t(V)\t\t(W)\n");
     printf("---\t---\t -----\t  ----\t     --------- \t      ---------       ---------\n");
+    for(i=0; i<Npts; i++){
+        printf("%d\t%.1lf\t %.1lf\t  %.1lf\t     %.3e\t      %.3e       %.3e\n", i,Vin,R1,R2[i],I[i],Vout[i],Pout[i]);
+    }
+    
+     
 
 
     return 0;
