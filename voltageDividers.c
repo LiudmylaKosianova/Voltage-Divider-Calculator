@@ -17,10 +17,10 @@ int main(void){
     double Pout[Npts];
     int PmaxInd, i;
 
-    printf("Wecome to the Voltage Divider Calculator");
-    printf("Enter a value for Voltage in: \n");
+    printf("Wecome to the Voltage Divider Calculator!\n\n");
+    printf("Enter a value for Voltage in: ");
     scanf(" %lf", &Vin);
-    printf("Enter a value for Resistor1 between 10 and 100 Ohms: \n");
+    printf("Enter a value for Resistor1 between 10 and 100 Ohms: ");
     scanf(" %lf", &R1);
 
     /*Populate R2[] array*/
@@ -54,16 +54,15 @@ int main(void){
     
     PmaxInd = max_index(Pout, Npts);
 
-    printf("Your results are:\n\n");
+    printf("\nYour results are:\n\n");
     printf("Ind\tVin\t  R1\t   R2\t\t I\t\tVout\t\tPout\n");
     printf("\t(V)\t (Ohm)\t  (Ohm)\t\t(A)\t\t(V)\t\t(W)\n");
     printf("---\t---\t -----\t  ----\t     --------- \t      ---------       ---------\n");
     for(i=0; i<Npts; i++){
         printf("%d\t%.1lf\t %.1lf\t  %.1lf\t     %.3e\t      %.3e       %.3e\n", i,Vin,R1,R2[i],I[i],Vout[i],Pout[i]);
     }
-    
-     
-
+    printf("\nThe max Power out is %.3e Watt, it occurs at R1 = %.1lf Ohms and R2 = %.1lf Ohms", Pout[PmaxInd], R1, R2[PmaxInd]);
+    printf("\n");
 
     return 0;
 }
@@ -79,12 +78,14 @@ void print_array(double A[], int x){
 
 int max_index(double P[], int x){
     double Pmax = P[0];
+    int maxIndex = 0;
     for(int j = 1; j<x; j++){
         if(P[j] > Pmax){
             Pmax = P[j];
+            maxIndex = j;
         }
     }
 
-    return Pmax;
+    return maxIndex;
 }
 
