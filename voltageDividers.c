@@ -33,6 +33,20 @@ int main(void){
 
     print_array(R2, Npts);
 
+    /*Populate I[] array with values of Current*/
+
+    for(i=0; i<Npts; i++){
+        I[i] = Vin / (R1 + R2[i]);
+    }
+
+    for (i=0;i<Npts; i++){
+        Vout[i] = Vin * (R2[i] / (R1 + R2[i]));
+    }
+
+    for (i=0;i<Npts; i++){
+        Pout[i] = I[i] * Vout[i]; 
+    }
+
     return 0;
 }
 
@@ -40,7 +54,7 @@ void print_array(double A[], int x){
     int i;
     printf("Your array = { ");
     for(i=0; i<x; i++){
-        printf("%d ", A[i]);
+        printf("%.2lf ", A[i]);
     }
     printf("}\n");
 }
