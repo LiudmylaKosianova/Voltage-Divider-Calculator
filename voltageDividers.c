@@ -6,6 +6,7 @@
 
 /**Functions*/
 void print_array(double A[], int x);
+int max_index(double P[], int x);
 
 int main(void){
 
@@ -14,7 +15,7 @@ int main(void){
     double I[Npts];
     double Vout[Npts];
     double Pout[Npts];
-    int PmaxInd, i, j, k;
+    int PmaxInd, i;
 
     printf("Wecome to the Voltage Divider Calculator");
     printf("Enter a value for Voltage in: \n");
@@ -39,13 +40,25 @@ int main(void){
         I[i] = Vin / (R1 + R2[i]);
     }
 
+    /*Populate Vout[] array with values of Voltage out*/
+
     for (i=0;i<Npts; i++){
         Vout[i] = Vin * (R2[i] / (R1 + R2[i]));
     }
 
+    /*Populate Pout[] array with values of Power out*/
+
     for (i=0;i<Npts; i++){
         Pout[i] = I[i] * Vout[i]; 
     }
+    
+    PmaxInd = max_index(Pout, Npts);
+
+    printf("Your results are:\n\n");
+    printf("Ind\tVin\t  R1\t   R2\t\t I\t\tVout\t\tPout\n");
+    printf("\t(V)\t (Ohm)\t  (Ohm)\t\t(A)\t\t(V)\t\t(W)\n");
+    printf("---\t---\t -----\t  ----\t     --------- \t      ---------       ---------\n");
+
 
     return 0;
 }
@@ -57,5 +70,16 @@ void print_array(double A[], int x){
         printf("%.2lf ", A[i]);
     }
     printf("}\n");
+}
+
+int max_index(double P[], int x){
+    double Pmax = P[0];
+    for(int j = 1; j<x; j++){
+        if(P[j] > Pmax){
+            Pmax = P[j];
+        }
+    }
+
+    return Pmax;
 }
 
