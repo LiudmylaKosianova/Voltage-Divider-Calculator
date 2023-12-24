@@ -6,7 +6,7 @@ The following circuit is called a voltage divider. It consists of an input volta
 
 ![Alt text](<Screenshot from 2023-12-16 20-06-50.png>)
 
-Relationship for this coltage divider circuit:
+Relationship for this voltage divider circuit:
 
 ![Alt text](<Screenshot from 2023-12-16 20-08-53.png>)
 
